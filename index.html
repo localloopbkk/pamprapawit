@@ -745,6 +745,27 @@
       html.is-ready .reveal span{ animation: none; opacity: 1; filter:none; transform:none; }
       .thumb:hover, .btn:hover, .circle:hover, .iconBtn:hover{ transform:none; }
     }
+  
+    /* Contact bottom image */
+    .contactBottom{
+      margin-top: 14px;
+    }
+    .lastImgWrap{
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 2px solid var(--line);
+      background: rgba(255,255,255,.82);
+      box-shadow: var(--shadow2);
+    }
+    .lastImgWrap img{
+      display:block;
+      width:100%;
+      height:auto;
+      max-height: 70vh;
+      object-fit: contain;
+    }
+
   </style>
 </head>
 
@@ -1146,7 +1167,13 @@
             </div>
           </div>
         </div>
-      </section>
+      
+        <div class="contactBottom" aria-label="Contact image">
+          <div class="lastImgWrap">
+            <img src="1x/last.png" alt="Contact footer image" loading="lazy" />
+          </div>
+        </div>
+</section>
     </main>
 
     <footer>
@@ -1290,27 +1317,27 @@
     };
 
     const selectedProjects = [
-      { n:"01", title:"Habitat Layout Creator — NASA Space Apps Challenge", badge:"Participatory Design", desc:"Interactive 3D layout tool + biosignal thinking for space habitat planning.", img: svgThumb("NASA", "Habitat Layout Creator"), stamp:"NASA", url:"https://www.spaceappschallenge.org/2025/find-a-team/n-r-x-fp-x-ne-x-fl-x-fi-x-fc-x-l/" },
-      { n:"02", title:"Voxel Bathhouse Co-Design Game", badge:"Bio-Responsive Systems", desc:"Web game for participatory design around bathing culture + spatial care.", img: svgThumb("VOXEL", "Bathhouse Co-Design"), stamp:"LINK", url:"" },
-      { n:"03", title:"LocalLoopBKK — Urban Platform", badge:"Social Practice", desc:"Participation platform for Bangkok neighborhoods: co-design + civic feedback loops.", img: svgThumb("LOCALLOOP", "Bangkok Platform"), stamp:"LINK", url:"https://localloopbkk.github.io/coyard/" },
-      { n:"04", title:"Repair Culture App & Community", badge:"Social Practice", desc:"Mapping repair culture as social infrastructure and design justice.", img: svgThumb("REPAIR", "Culture Mapping"), stamp:"LINK", url:"https://localloopbkk.github.io/repairculture/repart%20culture.html" },
-      { n:"05", title:"Choduk Community Playground (Monocle Awards context)", badge:"Cultural Integration", desc:"Community playground project contribution; playful public space + revitalization.", img: svgThumb("PLAY", "Choduk Playground"), stamp:"LINK", url:"" },
-      { n:"06", title:"XR Practices in NEWVIEWS School", badge:"Interactive Web / XR", desc:"AR x physical computing workshop participation and prototypes.", img: svgThumb("XR", "NEWVIEWS School"), stamp:"LINK", url:"" },
-      { n:"07", title:"NeuroActuate Web App", badge:"AI / ML", desc:"EEG/GSR-driven interaction concept for safe, responsive spatial output.", img: svgThumb("NEURO", "Actuate"), stamp:"LINK", url:"" },
-      { n:"08", title:"EmoTune AI Composer", badge:"Bio-Responsive Systems", desc:"Transforms affective signals into generative media output.", img: svgThumb("EMO", "Tune Composer"), stamp:"LINK", url:"" },
-      { n:"09", title:"Gesture Learning Interactive Interface", badge:"Interaction", desc:"Gesture mapping + biosignal layer for embodied interaction research.", img: svgThumb("GESTURE", "Learning Interface"), stamp:"LINK", url:"https://localloopbkk.github.io/gesturewithbiosignals/Test.html" },
-      { n:"10", title:"TempleTransform NeuroApp", badge:"Heritage + AI", desc:"Emotion-informed Thai façade / heritage form exploration.", img: svgThumb("TEMPLE", "Transform"), stamp:"LINK", url:"https://localloopbkk.github.io/Emotion/" },
+      { n:"01", title:"Habitat Layout Creator — NASA Space Apps Challenge", badge:"Participatory Design", desc:"Interactive 3D layout tool + biosignal thinking for space habitat planning.", img:"1x/Asset 1.png", stamp:"NASA", url:"https://www.spaceappschallenge.org/2025/find-a-team/n-r-x-fp-x-ne-x-fl-x-fi-x-fc-x-l/" },
+      { n:"02", title:"Voxel Bathhouse Co-Design Game", badge:"Bio-Responsive Systems", desc:"Web game for participatory design around bathing culture + spatial care.", img:"1x/Asset 2.png", stamp:"LINK", url:"" },
+      { n:"03", title:"LocalLoopBKK — Urban Platform", badge:"Social Practice", desc:"Participation platform for Bangkok neighborhoods: co-design + civic feedback loops.", img:"1x/Asset 3.png", stamp:"LINK", url:"https://localloopbkk.github.io/coyard/" },
+      { n:"04", title:"Repair Culture App & Community", badge:"Social Practice", desc:"Mapping repair culture as social infrastructure and design justice.", img:"1x/Asset 4.png", stamp:"LINK", url:"https://localloopbkk.github.io/repairculture/repart%20culture.html" },
+      { n:"05", title:"Choduk Community Playground (Monocle Awards context)", badge:"Cultural Integration", desc:"Community playground project contribution; playful public space + revitalization.", img:"1x/Asset 5.png", stamp:"LINK", url:"" },
+      { n:"06", title:"XR Practices in NEWVIEWS School", badge:"Interactive Web / XR", desc:"AR x physical computing workshop participation and prototypes.", img:"1x/Asset 6.png", stamp:"LINK", url:"" },
+      { n:"07", title:"NeuroActuate Web App", badge:"AI / ML", desc:"EEG/GSR-driven interaction concept for safe, responsive spatial output.", img:"1x/Asset 7.png", stamp:"LINK", url:"" },
+      { n:"08", title:"EmoTune AI Composer", badge:"Bio-Responsive Systems", desc:"Transforms affective signals into generative media output.", img:"1x/Asset 8.png", stamp:"LINK", url:"" },
+      { n:"09", title:"Gesture Learning Interactive Interface", badge:"Interaction", desc:"Gesture mapping + biosignal layer for embodied interaction research.", img:"1x/Asset 9.png", stamp:"LINK", url:"https://localloopbkk.github.io/gesturewithbiosignals/Test.html" },
+      { n:"10", title:"TempleTransform NeuroApp", badge:"Heritage + AI", desc:"Emotion-informed Thai façade / heritage form exploration.", img:"1x/Asset 10.png", stamp:"LINK", url:"https://localloopbkk.github.io/Emotion/" },
 
-      { n:"11", title:"Ovenbird Workshop (AAG 2025 / MIT)", badge:"Geometry", desc:"Advances in Architectural Geometry workshop participation.", img: svgThumb("AAG", "Ovenbird Workshop"), stamp:"LINK", url:"https://psl.design.upenn.edu/ovenbird-workshop-at-advances-in-architectural-geometry-conference2025/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExY0hIMFNQaVN4eHhuRmVtSnNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4Jlboh7HzqKKU2l7q4UyhbP99hO0Qyxvj5nLal7DqmAa2dMktASG55rlBFeQ_aem_tIiMDuqTQ6RlpblcBf9nGg" },
-      { n:"12", title:"COBOD 3D (ACADIA 2025)", badge:"Fabrication", desc:"3D construction / fabrication learning and documentation (ACADIA context).", img: svgThumb("COBOD", "3D Construction"), stamp:"LINK", url:"" },
-      { n:"13", title:"EPS Compression Pavilion", badge:"Fabrication", desc:"Material + assembly exploration through structural compression logic.", img: svgThumb("EPS", "Compression Pavilion"), stamp:"LINK", url:"" },
-      { n:"14", title:"PSK 4x4 Off-Road Thailand", badge:"Industry", desc:"Product/industry context; linking making + field practice.", img: svgThumb("PSK", "4x4 Thailand"), stamp:"LINK", url:"https://www.facebook.com/psk4x4thailand/" },
-      { n:"15", title:"Forest Management Webapp", badge:"Simulation", desc:"Dashboard + mapping for forest management and carbon narrative.", img: svgThumb("FOREST", "Management Webapp"), stamp:"LINK", url:"https://forestos.netlify.app/forestos_opencarbon_ratchaburi" },
-      { n:"16", title:"Upcycling with Scraplab", badge:"Social Practice", desc:"Upcycling / circularity practice, documented through prototype work.", img: svgThumb("SCRAP", "Upcycling"), stamp:"LINK", url:"" },
-      { n:"17", title:"Beautés du Monde Exhibition — Cartier Bangkok", badge:"Exhibition", desc:"Assistant modeler / presentation support for exhibition-related work.", img: svgThumb("CARTIER", "Exhibition Support"), stamp:"LINK", url:"" },
-      { n:"18", title:"NEWVIEWS Exhibition @FabCafe", badge:"Exhibition", desc:"Showcase of XR/physical computing work within community exhibition context.", img: svgThumb("FAB", "NEWVIEWS Exhibition"), stamp:"LINK", url:"" },
-      { n:"19", title:"Thai Temple Digital Preservation", badge:"Heritage", desc:"Digital studies of Thai architectural elements and preservation workflows.", img: svgThumb("HERITAGE", "Preservation"), stamp:"LINK", url:"" },
-      { n:"20", title:"AA Visiting School Bangkok", badge:"Social practice", desc:"Computational design learning + cultural integration in Bangkok context.", img: svgThumb("AA", "Visiting School"), stamp:"LINK", url:"https://www.aaschool.ac.uk/academicprogrammes/visitingschool/bangkok" }
+      { n:"11", title:"Ovenbird Workshop (AAG 2025 / MIT)", badge:"Geometry", desc:"Advances in Architectural Geometry workshop participation.", img:"1x/Asset 11.png", stamp:"LINK", url:"https://psl.design.upenn.edu/ovenbird-workshop-at-advances-in-architectural-geometry-conference2025/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExY0hIMFNQaVN4eHhuRmVtSnNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4Jlboh7HzqKKU2l7q4UyhbP99hO0Qyxvj5nLal7DqmAa2dMktASG55rlBFeQ_aem_tIiMDuqTQ6RlpblcBf9nGg" },
+      { n:"12", title:"COBOD 3D (ACADIA 2025)", badge:"Fabrication", desc:"3D construction / fabrication learning and documentation (ACADIA context).", img:"1x/Asset 12.png", stamp:"LINK", url:"" },
+      { n:"13", title:"EPS Compression Pavilion", badge:"Fabrication", desc:"Material + assembly exploration through structural compression logic.", img:"1x/Asset 13.png", stamp:"LINK", url:"" },
+      { n:"14", title:"PSK 4x4 Off-Road Thailand", badge:"Industry", desc:"Product/industry context; linking making + field practice.", img:"1x/Asset 14.png", stamp:"LINK", url:"https://www.facebook.com/psk4x4thailand/" },
+      { n:"15", title:"Forest Management Webapp", badge:"Simulation", desc:"Dashboard + mapping for forest management and carbon narrative.", img:"1x/Asset 15.png", stamp:"LINK", url:"https://forestos.netlify.app/forestos_opencarbon_ratchaburi" },
+      { n:"16", title:"Upcycling with Scraplab", badge:"Social Practice", desc:"Upcycling / circularity practice, documented through prototype work.", img:"1x/Asset 16.png", stamp:"LINK", url:"" },
+      { n:"17", title:"Beautés du Monde Exhibition — Cartier Bangkok", badge:"Exhibition", desc:"Assistant modeler / presentation support for exhibition-related work.", img:"1x/Asset 17.png", stamp:"LINK", url:"" },
+      { n:"18", title:"NEWVIEWS Exhibition @FabCafe", badge:"Exhibition", desc:"Showcase of XR/physical computing work within community exhibition context.", img:"1x/Asset 18.png", stamp:"LINK", url:"" },
+      { n:"19", title:"Thai Temple Digital Preservation", badge:"Heritage", desc:"Digital studies of Thai architectural elements and preservation workflows.", img:"1x/Asset 19.png", stamp:"LINK", url:"" },
+      { n:"20", title:"AA Visiting School Bangkok", badge:"Social practice", desc:"Computational design learning + cultural integration in Bangkok context.", img:"1x/Asset 20.png", stamp:"LINK", url:"https://www.aaschool.ac.uk/academicprogrammes/visitingschool/bangkok" }
     ];
 
 
