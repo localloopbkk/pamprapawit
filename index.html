@@ -6,27 +6,44 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Doto:wght@400;700;900&display=swap" rel="stylesheet">
 <title>Prapawit Intun — Portfolio</title>
   <meta name="description" content="Prapawit Intun is a Thai architect and computational-participatory design researcher working across architecture, AI, and community-centered design." />
     <style>
     :root{
-      --bg: rgb(240,240,240);
-      --paper: #ffffff;
-      --ink: #0d0e10;
-      --muted: rgba(13,14,16,.65);
-      --muted2: rgba(13,14,16,.52);
-      --line: rgba(13,14,16,.16);
-      --line2: rgba(13,14,16,.08);
-      --blue: rgb(31, 26, 214);
-      --brown: rgb(84, 54, 29);
+      /* palette lifted from the veri mockup */
+      --black: #050506;
+      --panel: #0c0c0e;
+      --panel2: rgba(255,255,255,.045);
+      --ink: #f4f3ef;
+      --muted: rgba(244,243,239,.66);
+      --muted2: rgba(244,243,239,.48);
+      --line: rgba(255,255,255,.14);
+      --line2: rgba(255,255,255,.08);
 
-      --radius: 26px;
-      --radius2: 18px;
-      --shadow: 0 30px 80px rgba(0,0,0,.08);
-      --shadow2: 0 10px 26px rgba(0,0,0,.08);
+      --mint: #b9dccb;
+      --mint-deep: #6f9a86;
+      --pink: #e9bad6;
+      --magenta: #d81b7a;
+      --blue: #1f3fcf;
+      --blue-deep: #0d1c6b;
+      --orange: #c9552b;
+      --yellow: #e6ee3c;
+
+      /* keep old token names alive for inline styles + JS */
+      --bg: #1c1d1a;
+      --paper: var(--panel);
+      --brown: var(--orange);
+
+      --radius: 30px;
+      --radius2: 22px;
+      --shadow: 0 40px 90px rgba(0,0,0,.55);
+      --shadow2: 0 14px 34px rgba(0,0,0,.40);
       --max: 1140px;
       --trayH: 112px;
+
+      --sans: "Instrument Sans", Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      --dots: "Doto", "Instrument Sans", monospace;
     }
 
     *{ box-sizing:border-box; }
@@ -35,26 +52,30 @@
       margin:0;
       background: var(--bg);
       color: var(--ink);
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--sans);
       letter-spacing: .1px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* soft paper grain */
+    /* hazy studio backdrop, like the mockup's blurred scene */
     body:before{
       content:"";
-      position:fixed; inset:-10px;
+      position:fixed; inset:-10%;
       pointer-events:none;
       background:
-        radial-gradient(900px 600px at 20% 10%, rgba(255,255,255,.55), transparent 60%),
-        radial-gradient(900px 600px at 90% 60%, rgba(255,255,255,.35), transparent 60%),
-        repeating-linear-gradient(135deg, rgba(0,0,0,.015) 0 2px, transparent 2px 14px);
-      opacity:.9;
-      mix-blend-mode:multiply;
+        radial-gradient(70vw 60vh at 12% 8%, #c3c0b8 0%, rgba(195,192,184,0) 60%),
+        radial-gradient(60vw 55vh at 85% 22%, #3b4a44 0%, rgba(59,74,68,0) 62%),
+        radial-gradient(70vw 60vh at 80% 88%, #3a2a27 0%, rgba(58,42,39,0) 60%),
+        radial-gradient(60vw 60vh at 18% 85%, #5a6a3e 0%, rgba(90,106,62,0) 62%),
+        linear-gradient(180deg, #8f8d86, #2e3a34 55%, #1d1815);
+      filter: blur(28px) saturate(.9);
       z-index:-1;
     }
 
-    a{ color: var(--blue); text-decoration:none; }
+    a{ color: var(--mint); text-decoration:none; }
     a:hover{ text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+    ::selection{ background: var(--magenta); color:#fff; }
 
     .wrap{ min-height:100dvh; padding-bottom: calc(var(--trayH) + 34px); }
 
@@ -68,45 +89,50 @@
     }
     .brand{
       display:flex; gap:10px; align-items:center;
-      padding:10px 14px;
+      padding:10px 16px 10px 12px;
       border-radius:999px;
-      background: var(--paper);
-      border:2px solid var(--line);
+      background: rgba(8,8,9,.86);
+      border:1px solid var(--line);
       box-shadow: var(--shadow2);
+      backdrop-filter: blur(14px);
       user-select:none;
     }
     .dot{
       width:10px; height:10px; border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, var(--blue), rgba(31,26,214,.15));
+      background: var(--yellow);
+      box-shadow: 0 0 0 4px rgba(230,238,60,.18), 0 0 18px rgba(230,238,60,.55);
     }
-    .brand b{ font-weight:750; letter-spacing:.2px; }
-    .brand span{ color:var(--muted2); font-size:13px; }
+    .brand b{ font-weight:600; letter-spacing:.1px; color:#fff; }
+    .brand span{ color:var(--muted2); font-size:12px; display:block; margin-top:2px; }
 
     .navpill{
-      display:flex; gap:6px; flex-wrap:wrap;
-      padding:6px;
+      display:flex; gap:4px; flex-wrap:wrap;
+      padding:5px;
       border-radius:999px;
-      background: rgba(255,255,255,.72);
-      border:2px solid var(--line);
+      background: rgba(8,8,9,.86);
+      border:1px solid var(--line);
       box-shadow: var(--shadow2);
+      backdrop-filter: blur(14px);
     }
     .navpill button{
       appearance:none; border:0; cursor:pointer;
-      padding:8px 10px;
+      padding:9px 13px;
       border-radius:999px;
       background:transparent;
       color:var(--muted);
+      font-family: var(--sans);
       font-size:13px;
-      letter-spacing:.2px;
-      transition: transform .12s ease, background .2s ease, color .2s ease;
+      letter-spacing:.1px;
+      transition: background .2s ease, color .2s ease;
     }
-    .navpill button:hover{ transform: translateY(-1px); color: var(--ink); }
-    .navpill button.active{ background: rgba(31,26,214,.10); color: var(--blue); }
+    .navpill button:hover{ color: #fff; }
+    .navpill button.active{ background: #fff; color: #000; }
 
+    main > section{ scroll-margin-top: 92px; }
     main{
       width:min(var(--max), calc(100% - 22px));
       margin:0 auto;
-      padding-top:92px;
+      padding-top:96px;
       display:flex;
       flex-direction:column;
       gap:22px;
@@ -118,16 +144,15 @@
       align-items:flex-end;
       justify-content:space-between;
       gap:14px;
-      padding: 0 6px;
+      padding: 0 10px;
     }
     .secHead h3{
       margin:0;
-      font-family: "Instrument Serif", serif;
-      font-style: italic;
-      font-weight: 400;
+      font-family: var(--sans);
+      font-weight: 500;
       letter-spacing: -0.03em;
-      font-size: clamp(26px, 3.2vw, 44px);
-      color: var(--blue);
+      font-size: clamp(26px, 3.2vw, 40px);
+      color: #fff;
     }
     .secHead small{
       color: var(--muted2);
@@ -136,15 +161,15 @@
       font-size: 13px;
     }
 
-    /* containers */
+    /* containers — black phone-screen panels */
     .frame{
       border-radius: var(--radius);
-      border:2px solid var(--line);
-      background: var(--paper);
+      border:1px solid var(--line);
+      background: var(--panel);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-    .frameInner{ padding: 18px; }
+    .frameInner{ padding: 16px; }
     .sectionInner{
       padding: 6px;
       margin-top: 12px;
@@ -161,13 +186,13 @@
       .sectionInner.grid2{ grid-template-columns: 1fr; }
     }
 
-    h4{ margin:0; font-size:14px; letter-spacing:.2px; color: var(--ink); }
-    p{ margin:8px 0 0; color: var(--muted); font-size:13px; line-height:1.55; }
-    ul{ margin:10px 0 0; padding-left:18px; color: rgba(13,14,16,.80); font-size:13px; line-height:1.55; }
+    h4{ margin:0; font-size:15px; font-weight:500; letter-spacing:0; color: #fff; }
+    p{ margin:8px 0 0; color: var(--muted); font-size:13.5px; line-height:1.55; }
+    ul{ margin:10px 0 0; padding-left:18px; color: var(--muted); font-size:13px; line-height:1.55; }
 
     .card{
-      background: var(--paper);
-      border:2px solid var(--line);
+      background: var(--panel);
+      border:1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow2);
     }
@@ -177,7 +202,7 @@
     .heroGrid{
       display:grid;
       grid-template-columns: 1.25fr .85fr;
-      gap:16px;
+      gap:12px;
     }
     @media (max-width: 980px){
       .heroGrid{ grid-template-columns: 1fr; }
@@ -186,211 +211,235 @@
     .miniRow{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:16px;
+      gap:12px;
     }
     @media (max-width: 760px){
       .miniRow{ grid-template-columns: 1fr; }
     }
 
+    /* mint tile, like "Move camera closer" */
     .avatarCard{
       display:flex; gap:14px; align-items:flex-start;
-      background: rgba(255,255,255,.88);
-      border:2px solid var(--line2);
+      background: linear-gradient(160deg, #c8e5d6, var(--mint) 55%, #9fc7b4);
+      border:0;
       border-radius: var(--radius2);
-      padding:14px;
+      padding:16px;
+      color:#0a0f0d;
     }
     .avatar{
-      width:52px; height:52px; border-radius: 18px;
-      border:2px solid rgba(255,255,255,.95);
+      width:56px; height:56px; border-radius: 18px;
+      border:0;
       background:
-        radial-gradient(circle at 30% 30%, rgba(31,26,214,.20), transparent 55%),
-        radial-gradient(circle at 70% 70%, rgba(84,54,29,.12), transparent 58%),
-        linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.02));
-      box-shadow: 0 14px 32px rgba(0,0,0,.10);
-      transform: rotate(-4deg);
+        radial-gradient(circle at 30% 25%, rgba(214,234,255,.85), transparent 45%),
+        radial-gradient(circle at 70% 80%, rgba(128,176,140,.9), transparent 55%),
+        linear-gradient(180deg, #1d2a24, #0a0e0c);
+      box-shadow: 0 14px 32px rgba(0,0,0,.25);
       flex:none;
     }
-    .avatarCard b{ font-size:14px; letter-spacing:.2px; }
-    .avatarCard p{ margin:6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.35; }
+    .avatarCard b{ font-size:14px; font-weight:600; color:#0a0f0d; }
+    .avatarCard .chip{
+      background: rgba(0,0,0,.72); color:#fff; border-color: transparent;
+    }
+    .avatarCard .chip i{ background: var(--yellow); opacity:1; }
 
+    /* dark tile with dot-matrix date, like the "Sugar 90" reading */
     .statCard{
-      background: rgba(255,255,255,.88);
-      border:2px solid var(--line2);
+      background: #000;
+      border:1px solid var(--line);
       border-radius: var(--radius2);
-      padding:14px;
+      padding:16px;
+      position:relative;
+      overflow:hidden;
+    }
+    .statCard:after{
+      content:"";
+      position:absolute; left:16px; right:16px; top:86px;
+      height:1px;
+      background: linear-gradient(90deg, var(--yellow) 0 38%, rgba(230,238,60,.15) 38%);
     }
     .statTop{
       display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
     }
     .statTop small{ color: var(--muted2); font-size: 12px; }
     .date{
-      font-family:"Instrument Serif", serif;
-      font-style: italic;
-      font-size: 44px;
+      font-family: var(--dots);
+      font-weight: 700;
+      font-size: 52px;
       line-height: .9;
-      letter-spacing: -0.03em;
-      color: var(--brown);
-      margin-top: 4px;
+      letter-spacing: .02em;
+      color: #fff;
+      margin-top: 6px;
     }
     .statList{
       display:flex; flex-wrap:wrap; gap:8px;
-      margin-top: 12px;
+      margin-top: 26px;
     }
 
     /* tiles */
     .tile{
       border-radius: var(--radius);
-      border:2px solid var(--line);
-      background: var(--paper);
+      border:1px solid var(--line);
+      background: var(--panel);
       box-shadow: var(--shadow2);
       overflow:hidden;
     }
+
+    /* pink glow tile, like the Reminder screen */
     .featuredTile{
       min-height: 250px;
       position:relative;
       overflow:hidden;
+      background: var(--pink);
+      border:0;
+      color:#1a0b14;
     }
     .featuredTile:before{
       content:"";
-      position:absolute; inset:-40px;
+      position:absolute; inset:0;
       background:
-        radial-gradient(620px 360px at 20% 20%, rgba(31,26,214,.18), transparent 60%),
-        radial-gradient(620px 360px at 80% 75%, rgba(84,54,29,.10), transparent 60%);
-      transform: rotate(-5deg);
-      opacity: .95;
+        radial-gradient(160px 160px at 82% 40%, #2a0a1e 0%, rgba(42,10,30,.95) 28%, rgba(216,27,122,.9) 40%, rgba(233,90,170,.6) 58%, rgba(233,186,214,0) 78%);
       pointer-events:none;
     }
     .featuredTile .pad{ position:relative; }
     .featuredTile h2{
       margin: 0;
-      font-family:"Instrument Serif", serif;
-      font-style: italic;
-      font-weight:400;
-      letter-spacing:-0.04em;
-      font-size: clamp(34px, 4.2vw, 56px);
-      color: var(--ink);
+      font-family: var(--sans);
+      font-weight:500;
+      letter-spacing:-0.035em;
+      font-size: clamp(30px, 3.6vw, 46px);
+      color: #1a0b14;
     }
     .featuredTile p{
       margin:10px 0 0;
-      color: var(--muted);
+      color: rgba(26,11,20,.78);
       font-size: 14px;
-      line-height: 1.45;
-      max-width: 64ch;
+      line-height: 1.5;
+      max-width: 54ch;
     }
+    .featuredTile .btn{
+      background: rgba(26,11,20,.78); color:#fff; border-color: transparent;
+    }
+    .featuredTile .btn:hover{ background: #1a0b14; border-color: transparent; }
+    .featuredTile .btn.primary{ background:#fff; color:#1a0b14; box-shadow:none; }
 
+    /* name tile — dot-matrix display */
     .markTile{
-      padding: 16px 18px;
-      transform: rotate(1deg);
-      border-width: 3px;
+      padding: 18px 20px 20px;
+      transform: none;
+      background: #000;
+      border:1px solid var(--line);
     }
     .markTitle{
-      font-family:"Instrument Serif", serif;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: -0.045em;
-      line-height: .78;
-      color: var(--blue);
-      font-size: clamp(64px, 6.4vw, 132px);
+      font-family: var(--dots);
+      font-weight: 700;
+      letter-spacing: .02em;
+      line-height: .95;
+      color: #fff;
+      font-size: clamp(52px, 5.6vw, 104px);
     }
     .markSub{
-      margin-top: 14px;
+      margin-top: 18px;
       color: var(--muted);
       font-size: 13px;
-      letter-spacing: .15px;
       max-width: 60ch;
+      padding-top: 14px;
+      border-top: 1px solid var(--line2);
     }
+    .markTile p{ font-size: 13px; }
 
     /* chips + buttons */
     .chip{
       display:inline-flex; align-items:center; gap:8px;
-      padding:7px 10px;
+      padding:7px 11px;
       border-radius: 999px;
-      border:2px solid rgba(13,14,16,.10);
-      background: rgba(255,255,255,.70);
-      color: rgba(13,14,16,.78);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--ink);
       font-size: 12px;
       line-height: 1;
       user-select:none;
     }
     .chip i{
-      width: 8px; height: 8px; border-radius: 99px;
-      background: var(--blue);
-      opacity: .65;
+      width: 7px; height: 7px; border-radius: 99px;
+      background: var(--mint);
       display:inline-block;
     }
 
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:8px;
-      padding: 10px 12px;
+      padding: 10px 14px;
       border-radius: 999px;
-      border:2px solid var(--line);
-      background: rgba(255,255,255,.84);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.07);
       color: var(--ink);
+      font-family: var(--sans);
       font-size: 13px;
       cursor:pointer;
-      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+      transition: background .2s ease, border-color .2s ease;
       white-space: nowrap;
     }
-    .btn:hover{ transform: translateY(-1px); background: #fff; border-color: rgba(13,14,16,.26); }
+    .btn:hover{ background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); }
     .btn.primary{
-      background: var(--blue);
-      border-color: var(--blue);
-      color: #fff;
-      box-shadow: 0 16px 34px rgba(31,26,214,.22);
+      background: var(--mint);
+      border-color: var(--mint);
+      color: #06110c;
+      font-weight:600;
+      box-shadow: 0 16px 34px rgba(185,220,203,.15);
     }
-    .btn.primary:hover{ filter: brightness(.98); }
+    .btn.primary:hover{ background:#d2ebde; border-color:#d2ebde; }
     .btn.ghost{
       background: transparent;
-      border-color: rgba(13,14,16,.20);
-      color: rgba(13,14,16,.86);
+      border-color: var(--line);
+      color: var(--ink);
     }
-    .btn.disabled{ opacity:.55; pointer-events:none; }
+    .btn.disabled{ opacity:.45; pointer-events:none; }
 
-    .links{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 10px; }
-    .ctaRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
+    .links{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px; }
+    .ctaRow{ display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px; }
 
-    /* quick category row */
+    /* quick category row — weekday selector feel */
     .pillRow{
-      margin-top: 16px;
+      margin-top: 12px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
       padding: 14px;
-      border-radius: var(--radius);
-      border:2px solid var(--line2);
-      background: rgba(255,255,255,.78);
+      border-radius: var(--radius2);
+      border:1px solid var(--line2);
+      background: #000;
     }
     .logoBox{
       width: 48px; height: 48px;
-      border-radius: 16px;
-      border: 3px solid rgba(255,255,255,.95);
+      border-radius: 999px;
+      border: 0;
       background: #fff;
-      box-shadow: 0 14px 32px rgba(0,0,0,.10);
       display:flex; align-items:center; justify-content:center;
-      font-weight: 780;
-      letter-spacing: .2px;
-      color: var(--blue);
-      transform: rotate(-6deg);
+      font-family: var(--dots);
+      font-weight: 900;
+      font-size: 18px;
+      color: #000;
     }
     .desc{ display:flex; align-items:center; gap:12px; }
-    .descText b{ display:block; font-size: 13px; }
+    .descText b{ display:block; font-size: 13px; font-weight:500; color:#fff; }
     .descText span{ display:block; color: var(--muted2); font-size: 12px; margin-top: 2px; }
     .circleBtns{ display:flex; flex-wrap:wrap; gap:8px; justify-content:flex-end; }
     .circle{
-      width: 62px; height: 62px;
+      min-width: 62px; height: 62px; padding: 0 12px;
       border-radius: 999px;
-      border:2px solid var(--line2);
-      background: rgba(255,255,255,.9);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
       cursor:pointer;
       display:flex; flex-direction:column; align-items:center; justify-content:center;
       gap:4px;
-      transition: transform .12s ease, border-color .2s ease, background .2s ease;
+      transition: border-color .2s ease, background .2s ease;
     }
-    .circle:hover{ transform: translateY(-2px); border-color: rgba(31,26,214,.35); }
-    .circle.active{ border-color: rgba(31,26,214,.55); box-shadow: 0 18px 40px rgba(31,26,214,.12); }
-    .circle span{ font-size: 18px; }
-    .circle small{ font-size: 10px; color: var(--muted2); letter-spacing: .2px; }
+    .circle:hover{ border-color: rgba(255,255,255,.4); }
+    .circle.active{ background:#fff; color:#000; border-color:#fff; }
+    .circle.active small{ color: rgba(0,0,0,.6); }
+    .circle span{ font-family: var(--dots); font-weight: 700; font-size: 20px; line-height:1; letter-spacing:.04em; }
+    .circle small{ font-size: 10px; color: var(--muted2); }
 
     /* portfolio grid */
     .projHead{
@@ -398,12 +447,11 @@
     }
     .projHead h4{
       margin:0;
-      font-family:"Instrument Serif", serif;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing:-0.03em;
-      color: var(--ink);
-      font-size: 22px;
+      font-family: var(--sans);
+      font-weight: 500;
+      letter-spacing:-0.02em;
+      color: #fff;
+      font-size: 20px;
     }
     .projHead span{
       color: var(--muted2);
@@ -423,42 +471,36 @@
     }
     .proj{
       border-radius: var(--radius2);
-      border:2px solid var(--line2);
-      background: rgba(255,255,255,.84);
-      padding: 14px;
+      border:1px solid var(--line2);
+      background: #000;
+      padding: 12px;
     }
 
-    /* image-first card media (picture → title → link) */
     .projMedia{
       width:100%;
       height: 176px;
-      border-radius: 18px;
+      border-radius: 16px;
       overflow:hidden;
-      border:2px solid var(--line2);
-      background: #fff;
+      border:0;
+      background: #111;
       position:relative;
       cursor:pointer;
       margin-bottom: 12px;
       padding:0;
       display:block;
       text-align:left;
-      transition: transform .14s ease, box-shadow .18s ease, border-color .2s ease, filter .2s ease;
+      transition: box-shadow .18s ease;
     }
     .projMedia img{
       width:100%; height:100%;
       object-fit: cover;
       display:block;
-      filter: saturate(1.06) contrast(1.02);
       transform: scale(1.02);
-      transition: transform .18s ease, filter .18s ease;
+      transition: transform .25s ease;
     }
-    .projMedia:hover{
-      transform: translateY(-5px);
-      border-color: rgba(31,26,214,.42);
-      box-shadow: 0 22px 50px rgba(0,0,0,.14);
-    }
-    .projMedia:hover img{ transform: scale(1.06); filter: saturate(1.1) contrast(1.04); }
-    .projMedia:active{ transform: translateY(-2px) scale(.99); }
+    .projMedia:hover{ box-shadow: 0 0 0 1px rgba(255,255,255,.35); }
+    .projMedia:hover img{ transform: scale(1.06); }
+    .projMedia:active img{ transform: scale(1.03); }
 
     .mediaOverlay{
       position:absolute; inset:0;
@@ -469,7 +511,7 @@
       padding: 12px;
       opacity: 0;
       transition: opacity .18s ease;
-      background: linear-gradient(180deg, rgba(13,14,16,0) 40%, rgba(13,14,16,.42) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.72) 100%);
     }
     .projMedia:hover .mediaOverlay{ opacity: 1; }
 
@@ -477,10 +519,10 @@
       display:inline-flex; align-items:center; gap:8px;
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.84);
-      border:2px solid rgba(255,255,255,.55);
+      background: rgba(0,0,0,.6);
+      border:1px solid rgba(255,255,255,.25);
       font-size: 12px;
-      color: rgba(13,14,16,.86);
+      color: #fff;
       line-height: 1;
       backdrop-filter: blur(6px);
     }
@@ -488,12 +530,12 @@
       display:inline-flex;
       padding: 7px 10px;
       border-radius: 999px;
-      background: rgba(31,26,214,.95);
-      border:2px solid rgba(255,255,255,.6);
-      color:#fff;
+      background: var(--mint);
+      border:0;
+      color:#06110c;
       font-size: 12px;
+      font-weight:600;
       line-height:1;
-      box-shadow: 0 14px 28px rgba(31,26,214,.22);
       transform: translateY(6px);
       transition: transform .18s ease;
     }
@@ -503,47 +545,45 @@
       position:absolute;
       top: 12px;
       right: 12px;
-      padding: 7px 10px;
+      padding: 6px 10px;
       border-radius: 999px;
-      border: 2px dashed rgba(13,14,16,.30);
-      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(0,0,0,.55);
+      font-family: var(--dots);
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .18em;
-      color: rgba(13,14,16,.82);
-      transform: rotate(10deg);
-      box-shadow: 0 16px 34px rgba(0,0,0,.12);
+      font-weight: 900;
+      letter-spacing: .12em;
+      color: var(--yellow);
+      backdrop-filter: blur(6px);
       user-select:none;
     }
 
-    /* tiny pop animation when clicking */
     .projMedia.pop{ animation: popOut .22s cubic-bezier(.2,.9,.2,1); }
     @keyframes popOut{
-      0%{ transform: translateY(-3px) scale(1.0); }
-      60%{ transform: translateY(-10px) scale(1.03); }
-      100%{ transform: translateY(-5px) scale(1.0); }
+      0%{ transform: scale(1.0); }
+      60%{ transform: scale(1.02); }
+      100%{ transform: scale(1.0); }
     }
 
-    /* allow drawer open button to be disabled */
-    .btn.isDisabled{ opacity:.55; pointer-events:none; }
+    .btn.isDisabled{ opacity:.45; pointer-events:none; }
     .projTop{
       display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
     }
-    .projTop b{ font-size: 13px; letter-spacing:.2px; }
+    .projTop b{ font-size: 13px; font-weight:500; color:#fff; }
     .badge{
       font-size: 11px;
       padding: 6px 9px;
       border-radius: 999px;
-      border:2px solid rgba(13,14,16,.12);
-      color: rgba(13,14,16,.74);
-      background: rgba(255,255,255,.75);
+      border:1px solid var(--line);
+      color: var(--muted);
+      background: transparent;
       white-space: nowrap;
     }
     .proj p{
       margin:10px 0 0;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.35;
+      line-height: 1.4;
     }
     .projBtns{
       display:flex; gap:10px; flex-wrap:wrap;
@@ -552,15 +592,16 @@
 
     /* details lists */
     details{
-      border-radius: var(--radius);
-      border:2px solid var(--line2);
-      background: rgba(255,255,255,.84);
+      border-radius: var(--radius2);
+      border:1px solid var(--line2);
+      background: var(--panel);
       overflow:hidden;
     }
+    details[open]{ border-color: var(--line); }
     summary{
       list-style:none;
       cursor:pointer;
-      padding: 14px 16px;
+      padding: 16px 18px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -569,22 +610,22 @@
     }
     summary::-webkit-details-marker{ display:none; }
     summary span:first-child{
-      font-family:"Instrument Serif", serif;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      font-size: 18px;
-      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      font-size: 16px;
+      color: #fff;
     }
+    summary span:last-child{ font-size:12px; font-weight:400 !important; }
     .detailBody{
-      padding: 0 16px 16px;
-      color: rgba(13,14,16,.80);
-      font-size: 13px;
-      line-height: 1.55;
+      padding: 0 18px 18px;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.6;
     }
     .kline{
-      height: 2px;
-      background: rgba(13,14,16,.10);
+      height: 1px;
+      background: var(--line2);
       margin: 0 0 12px;
     }
 
@@ -595,8 +636,9 @@
       bottom: calc(var(--trayH) + 18px);
       width: min(520px, calc(100% - 36px));
       border-radius: var(--radius);
-      border: 3px solid rgba(13,14,16,.18);
-      background: rgba(255,255,255,.96);
+      border: 1px solid var(--line);
+      background: rgba(8,8,9,.94);
+      backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
       z-index: 80;
       opacity: 0;
@@ -611,24 +653,25 @@
     }
     .drawerTop{
       display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-      padding: 14px 14px 0;
+      padding: 16px 16px 0;
     }
     .drawerTop h5{
       margin:0;
-      font-family:"Instrument Serif", serif;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing:-0.03em;
-      font-size: 22px;
-      color: var(--blue);
+      font-family: var(--sans);
+      font-weight: 500;
+      letter-spacing:-0.02em;
+      font-size: 20px;
+      color: #fff;
     }
-    .drawerBody{ padding: 0 14px 14px; }
+    .drawerTop #dRole{ color: var(--muted2) !important; }
+    .drawerBody{ padding: 0 16px 16px; }
     .tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
     .x{
       width: 40px; height: 40px;
       border-radius: 999px;
-      border:2px solid rgba(13,14,16,.18);
-      background: rgba(255,255,255,.85);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color:#fff;
       cursor:pointer;
     }
 
@@ -636,14 +679,13 @@
     footer{
       width:min(var(--max), calc(100% - 22px));
       margin: 14px auto 0;
-      padding: 0 8px;
+      padding: 0 8px 10px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
-      color: var(--muted2);
+      color: rgba(255,255,255,.55);
       font-size: 12px;
-      padding-bottom: 10px;
     }
 
     /* scroll buttons */
@@ -657,13 +699,15 @@
     .iconBtn{
       width: 44px; height: 44px;
       border-radius: 999px;
-      border:2px solid rgba(13,14,16,.18);
-      background: rgba(255,255,255,.85);
+      border:1px solid var(--line);
+      background: rgba(8,8,9,.86);
+      color:#fff;
       cursor:pointer;
       box-shadow: var(--shadow2);
-      transition: transform .12s ease;
+      backdrop-filter: blur(12px);
+      transition: background .2s ease;
     }
-    .iconBtn:hover{ transform: translateY(-1px); }
+    .iconBtn:hover{ background: rgba(255,255,255,.14); }
 
     /* bottom tray */
     .tray{
@@ -674,8 +718,9 @@
       width: min(var(--max), calc(100% - 22px));
       height: var(--trayH);
       border-radius: var(--radius);
-      border: 3px solid rgba(13,14,16,.18);
-      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      background: rgba(8,8,9,.88);
+      backdrop-filter: blur(18px);
       box-shadow: var(--shadow);
       display:flex;
       align-items:center;
@@ -685,12 +730,11 @@
     }
     .trayLabel b{
       display:block;
-      font-family:"Instrument Serif", serif;
-      font-style: italic;
-      font-weight: 400;
-      letter-spacing:-0.02em;
-      color: var(--ink);
-      font-size: 18px;
+      font-family: var(--sans);
+      font-weight: 500;
+      letter-spacing:-0.01em;
+      color: #fff;
+      font-size: 16px;
       margin-bottom: 3px;
     }
     .trayLabel span{ color: var(--muted2); font-size: 12px; }
@@ -702,31 +746,30 @@
       padding-bottom: 2px;
       scroll-snap-type: x mandatory;
     }
-    .thumbs::-webkit-scrollbar{ height: 8px; }
-    .thumbs::-webkit-scrollbar-thumb{ background: rgba(0,0,0,.18); border-radius: 99px; }
+    .thumbs::-webkit-scrollbar{ height: 6px; }
+    .thumbs::-webkit-scrollbar-thumb{ background: rgba(255,255,255,.2); border-radius: 99px; }
     .thumb{
       flex:none;
       width: 240px;
-      border-radius: 20px;
-      border:2px solid rgba(13,14,16,.16);
-      background: #fff;
+      border-radius: 18px;
+      border:1px solid var(--line2);
+      background: #000;
       overflow:hidden;
       cursor:pointer;
       position:relative;
       scroll-snap-align: start;
-      transition: transform .12s ease, border-color .2s ease;
+      transition: border-color .2s ease;
     }
-    .thumb:hover{ transform: translateY(-2px); border-color: rgba(31,26,214,.36); }
-    .thumb.active{ border-color: rgba(31,26,214,.55); box-shadow: 0 18px 40px rgba(31,26,214,.10); }
+    .thumb:hover{ border-color: rgba(255,255,255,.35); }
+    .thumb.active{ border-color: var(--yellow); }
     .tbg{
       height: 54px;
-      border-bottom: 2px solid rgba(13,14,16,.10);
     }
     .ttext{ padding: 10px 12px; }
-    .ttext b{ display:block; font-size: 13px; letter-spacing:.2px; color: var(--ink); }
+    .ttext b{ display:block; font-size: 13px; font-weight:500; color: #fff; }
     .ttext span{ display:block; font-size: 11px; color: var(--muted2); margin-top: 3px; white-space: nowrap; overflow:hidden; text-overflow: ellipsis; }
 
-    /* reveal animation (Framer-ish) */
+    /* reveal animation */
     .reveal span{
       display:inline-block;
       opacity: 0.001;
@@ -741,21 +784,14 @@
       to{ opacity: 1; filter: blur(0); transform: translateY(0); }
     }
 
-    @media (prefers-reduced-motion: reduce){
-      html.is-ready .reveal span{ animation: none; opacity: 1; filter:none; transform:none; }
-      .thumb:hover, .btn:hover, .circle:hover, .iconBtn:hover{ transform:none; }
-    }
-  
     /* Contact bottom image */
-    .contactBottom{
-      margin-top: 14px;
-    }
+    .contactBottom{ margin-top: 14px; }
     .lastImgWrap{
       width: 100%;
       border-radius: var(--radius);
       overflow: hidden;
-      border: 2px solid var(--line);
-      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      background: #000;
       box-shadow: var(--shadow2);
     }
     .lastImgWrap img{
@@ -764,6 +800,116 @@
       height:auto;
       max-height: 70vh;
       object-fit: contain;
+    }
+
+    /* ===== About / bio — tiles like the glucose dashboard ===== */
+    .bioGrid{
+      display:grid;
+      grid-template-columns: repeat(6, minmax(0,1fr));
+      gap:12px;
+      padding: 16px;
+    }
+    .bioTile{
+      border-radius: var(--radius2);
+      padding: 18px 18px 20px;
+      position:relative;
+      overflow:hidden;
+      min-height: 200px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .bioTile small{
+      font-size: 12px;
+      color: inherit;
+      opacity: .7;
+    }
+    .bioTile p{
+      margin:0;
+      color: inherit;
+      opacity: .92;
+      font-size: 13.5px;
+      line-height: 1.55;
+      max-width: 62ch;
+    }
+    .bioTile .num{
+      font-family: var(--dots);
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1;
+      letter-spacing: .02em;
+    }
+    .bioTile .num sub{
+      font-family: var(--sans);
+      font-weight: 400;
+      font-size: 13px;
+      vertical-align: baseline;
+      margin-left: 6px;
+      opacity: .75;
+    }
+
+    .bioIntro{ grid-column: span 6; background:#000; color:#fff; border:1px solid var(--line); }
+    .bioIntro .bioHead{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;
+    }
+    .bioIntro h3{
+      margin:0;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.03em;
+    }
+    .bioStats{ display:flex; gap:22px; flex-wrap:wrap; }
+    .bioStats div{ display:flex; flex-direction:column; gap:4px; }
+    .bioStats .num{ font-size: 36px; }
+    .bioStats span{ font-size: 12px; color: var(--muted2); }
+    .bioIntro .track{
+      height: 1px; margin: 6px 0 4px;
+      background: linear-gradient(90deg, var(--yellow) 0 22%, rgba(255,255,255,.18) 22%);
+      position:relative;
+    }
+    .bioIntro .track:after{
+      content:""; position:absolute; left: 22%; top:-5px;
+      border: 5px solid transparent; border-top: 6px solid var(--yellow);
+      transform: translateX(-50%);
+    }
+    .bioIntro p{ max-width: 80ch; }
+
+    .bioMint{ grid-column: span 3; background: linear-gradient(160deg, #c8e5d6, var(--mint) 55%, #9fc7b4); color:#0a0f0d; }
+    .bioPink{ grid-column: span 3; background: var(--pink); color:#1a0b14; }
+    .bioPink:before{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background: radial-gradient(150px 150px at 88% 18%, #2a0a1e 0%, rgba(42,10,30,.9) 26%, rgba(216,27,122,.85) 42%, rgba(233,186,214,0) 72%);
+    }
+    .bioPink > *{ position:relative; }
+    .bioBlue{ grid-column: span 2; background: linear-gradient(180deg, var(--blue), var(--blue-deep)); color:#fff; }
+    .bioBlue .bars{
+      display:flex; gap:3px; align-items:flex-end; height:26px; margin-top:auto;
+    }
+    .bioBlue .bars i{ flex:1; background: rgba(255,255,255,.55); border-radius:2px; display:block; }
+    .bioBlue .bars i:nth-child(3n){ height:100%; } .bioBlue .bars i:nth-child(3n+1){ height:55%; } .bioBlue .bars i:nth-child(3n+2){ height:75%; }
+    .bioBlue .bars i.hot{ background: var(--yellow); height:100%; }
+    .bioOrange{ grid-column: span 2; background: var(--orange); color:#fff; }
+    .bioOrange:after{
+      content:""; position:absolute; right:-40px; bottom:-60px; width:180px; height:180px; border-radius:50%;
+      background: radial-gradient(circle, rgba(31,63,207,.9), rgba(31,63,207,0) 70%);
+      pointer-events:none;
+    }
+    .bioOrange > *{ position:relative; }
+    .bioGrad{ grid-column: span 2; background: linear-gradient(170deg, #4b3a4f 0%, #c66a7e 60%, #e0876f); color:#fff; }
+
+    @media (max-width: 980px){
+      .bioMint, .bioPink{ grid-column: span 6; }
+      .bioBlue, .bioOrange, .bioGrad{ grid-column: span 3; }
+    }
+    @media (max-width: 640px){
+      .bioGrid{ padding: 12px; }
+      .bioBlue, .bioOrange, .bioGrad{ grid-column: span 6; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html.is-ready .reveal span{ animation: none; opacity: 1; filter:none; transform:none; }
+      .projMedia img, .projMedia.pop{ transition:none; animation:none; }
     }
 
   </style>
@@ -802,6 +948,7 @@
 
     <div class="navpill" aria-label="Section navigation">
       <button class="active" data-to="#home">Home</button>
+      <button data-to="#about">About</button>
       <button data-to="#portfolio">Portfolio</button>
       <button data-to="#evidence">Evidence</button>
       <button data-to="#contact">Contact</button>
@@ -899,22 +1046,117 @@
             <div class="desc">
               <div class="logoBox">PI</div>
               <div class="descText">
-                <b>Jump to a category</b>
-                <span>Tap a circle to scroll + open the matching section.</span>
+                <b>Browse by category</b>
+                <span>Select a number to open the matching section.</span>
               </div>
             </div>
 
             <div class="circleBtns" id="circleBtns">
-              <button class="circle active" data-jump="awards" title="Awards"><span>🏆</span><small>Awards</small></button>
-              <button class="circle" data-jump="memberships" title="Memberships"><span>🧩</span><small>Memberships</small></button>
-              <button class="circle" data-jump="media" title="Media"><span>🎙️</span><small>Media</small></button>
-              <button class="circle" data-jump="judge" title="Judge/Critic"><span>🧑‍⚖️</span><small>Critic</small></button>
-              <button class="circle" data-jump="contrib" title="Contributions"><span>🛠️</span><small>Impact</small></button>
-              <button class="circle" data-jump="pubs" title="Publications"><span>📄</span><small>Pubs</small></button>
-              <button class="circle" data-jump="shows" title="Exhibitions"><span>🖼️</span><small>Shows</small></button>
-              <button class="circle" data-jump="roles" title="Leading Roles"><span>🧭</span><small>Roles</small></button>
-              <button class="circle" data-jump="commercial" title="Engagement"><span>📣</span><small>Engage</small></button>
+              <button class="circle active" data-jump="awards" title="Awards"><span>01</span><small>Awards</small></button>
+              <button class="circle" data-jump="memberships" title="Memberships"><span>02</span><small>Memberships</small></button>
+              <button class="circle" data-jump="media" title="Media"><span>03</span><small>Media</small></button>
+              <button class="circle" data-jump="judge" title="Judge/Critic"><span>04</span><small>Critic</small></button>
+              <button class="circle" data-jump="contrib" title="Contributions"><span>05</span><small>Impact</small></button>
+              <button class="circle" data-jump="pubs" title="Publications"><span>06</span><small>Publications</small></button>
+              <button class="circle" data-jump="shows" title="Exhibitions"><span>07</span><small>Exhibitions</small></button>
+              <button class="circle" data-jump="roles" title="Leading Roles"><span>08</span><small>Roles</small></button>
+              <button class="circle" data-jump="commercial" title="Engagement"><span>09</span><small>Engagement</small></button>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT / BIO -->
+      <section id="about" class="frame" aria-label="About">
+        <div class="bioGrid">
+          <div class="bioTile bioIntro">
+            <div class="bioHead">
+              <h3>Pam (Prapawit) Intun</h3>
+              <div class="bioStats">
+                <div><span class="num">77</span><span>Thai cities piloted</span></div>
+                <div><span class="num">8+</span><span>languages</span></div>
+                <div><span class="num">5+</span><span>peer-reviewed papers</span></div>
+                <div><span class="num">8+</span><span>years in public participation</span></div>
+              </div>
+            </div>
+            <div class="track"></div>
+            <p>
+              Pam is a creative technologist and AI &amp; robotics researcher working at the intersection of computer vision,
+              large language models, augmented reality, robotics, design, and fabrication. A Silicon Valley Fellow &rsquo;26, she builds
+              LLM and edge-AI systems that turn unstructured human input into machine-executable output, moving fluidly between
+              academic research, industry, and hands-on practice with clients. She is the founder of Layerminds.AI and
+              Participatory Citizen Lab; her AI-assisted permitting solution was selected for the White House Council on
+              Environmental Quality&rsquo;s Permitting Innovators Solutions Catalog, and features she developed were selected by
+              OpenAI&rsquo;s Builder Lounge at NY Tech Week and OpenAI DevDay 2026.
+            </p>
+          </div>
+
+          <div class="bioTile bioMint">
+            <small>Materials, machines, and research</small>
+            <p>
+              At Scrap Lab, founded by Singh Intrachooto (MIT 2002), she joined his lab to pursue her research with dignity,
+              developing coffee-ground extrusion lines and textile baskets and learning to produce both machines and
+              bio-materials. As a Research Associate in the Architectural Intelligence Research Group at Chulalongkorn University,
+              she applies machine learning to architectural heritage and soft robotics in partnership with Kyoto University.
+              Her expertise extends into biotechnology and living materials through Fabricademy, and she has established pre-,
+              in-, and post-fabrication workflows for the construction industry &mdash; a foundation that also informs her role as
+              Head of Research at PSK 4x4 Product Thailand, an automotive manufacturing business, where she explores new
+              technologies and biomaterials in mobility.
+            </p>
+          </div>
+
+          <div class="bioTile bioPink">
+            <small>LocalLoop and public participation</small>
+            <p>
+              With more than eight years in public participation, Prapawit founded LocalLoop, an LLM platform for community-led
+              design piloted across 77 Thai cities and five U.S. cities in more than eight languages. It won the Global Grand
+              Award and Sustainability Leadership Award at the International Sustainable Design Awards (ISDA) 2026 in Hong Kong
+              and was named to TIME&rsquo;s Best Inventions 2026. She won Best Use of Arduino App Lab for Hardware Hack, sponsored
+              by Qualcomm, at Reality Hack @ MIT 2026, and received an Honorable Mention at the NASA Space Apps Challenge 2025.
+            </p>
+          </div>
+
+          <div class="bioTile bioBlue">
+            <small>Exhibitions and publications</small>
+            <p>
+              Her work has been exhibited at Seattle Design Festival, NY Tech Week, Climate Crossing, the Harvard XR Conference at
+              Harvard GSD, and in Singapore, with an upcoming showing at SXSW 2027. She has authored 5+ peer-reviewed
+              publications, including ACADIA, the International Journal of Architectural Computing, the International Journal of
+              Advances in Signal and Image Sciences, The Princeton Journal of Interdisciplinary Research (PJIR), the Journal of
+              Cultural Analysis and Social Change, and the International Conference on Multidisciplinary Current Research, and
+              serves as an invited reviewer for two Q1 journals.
+            </p>
+            <div class="bars" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="hot"></i><i></i><i></i><i></i>
+            </div>
+          </div>
+
+          <div class="bioTile bioGrad">
+            <small>Funding, honours, and education</small>
+            <p>
+              Her research is fully funded by Thailand&rsquo;s highly competitive White Elephant Scholarship and the C2F Research
+              Fellowship from Chulalongkorn University, and her nonprofit work has been supported by the Society of Young Social
+              Innovators (SYSI), Thai Health Promotion Foundation, AIDS Access, and SHMA. As a volunteer designer for Choduk
+              Community Park, she contributed to a project that won the Monocle Design Award for Best for Kids in 2022. Her
+              bachelor&rsquo;s thesis, <em>Space of Flow</em>, won the Bronze Prize at the Asia Young Designer Awards, Thesis of the
+              Year by national popular vote, and a UnIADA &rsquo;22 shortlisting among the world&rsquo;s leading graduation projects; she
+              graduated valedictorian with First-Class Honors and a Gold Medal conferred by Her Royal Highness Princess Maha
+              Chakri Sirindhorn. Her master&rsquo;s thesis on digital public participation was presented at the MIT Media Lab Gen AI
+              Design Workshop 2025. She is pursuing a Professional Certificate in Innovation and Technology at MIT.
+            </p>
+          </div>
+
+          <div class="bioTile bioOrange">
+            <small>Looking ahead</small>
+            <p>
+              Prapawit is developing an AI safety and governance framework for the architectural profession in Southeast Asia,
+              to be proposed to the United Nations and the Architectural Association, keeping AI systems subordinate to human
+              judgment at critical decision points and examining how architects can collaborate with advanced technology
+              through ethics, intellectual rigor, and reflective practice. This research has garnered recognition from the
+              American Institute of Architects (AIA). Across research, industry, and community work, her practice rests on a
+              single conviction: that emerging technology and material innovation are most powerful when they serve people and
+              places, and that the profession must shape these tools rather than be shaped by them.
+            </p>
           </div>
         </div>
       </section>
@@ -923,7 +1165,7 @@
       <section id="portfolio" aria-label="Portfolio">
         <div class="secHead">
           <h3>Portfolio</h3>
-          <small>Selected projects first → then “Portfolio (by category)”.</small>
+          <small>Selected projects, followed by the full record by category.</small>
         </div>
 
         <div class="sectionInner">
@@ -1212,7 +1454,7 @@
 
     <footer>
       <span>© <span id="year"></span> Prapawit Intun</span>
-      <span>Scroll • Bottom tray = demos + events</span>
+      <span>Interactive demos and events are in the tray below</span>
     </footer>
   </div>
 
@@ -1236,7 +1478,7 @@
   <div class="tray" role="region" aria-label="Project tray">
     <div class="trayLabel">
       <b>Projects & Events</b>
-      <span>Tap → details + open link</span>
+      <span>Select a project to view details</span>
     </div>
     <div class="thumbs" id="thumbs" aria-label="Project thumbnails"></div>
   </div>
@@ -1246,7 +1488,7 @@
     <div class="drawerTop">
       <div>
         <h5 id="dTitle">Title</h5>
-        <div id="dRole" style="margin-top:4px; color:rgba(11,16,32,.62); font-size:12px;"></div>
+        <div id="dRole" style="margin-top:4px; font-size:12px;"></div>
       </div>
       <button class="x" id="closeDrawer" aria-label="Close">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -1327,23 +1569,23 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="rgba(31,26,214,.28)"/>
-              <stop offset="1" stop-color="rgba(84,54,29,.14)"/>
+              <stop offset="0" stop-color="rgba(216,27,122,.55)"/>
+              <stop offset="1" stop-color="rgba(31,63,207,.45)"/>
             </linearGradient>
             <radialGradient id="g2" cx="30%" cy="25%" r="65%">
-              <stop offset="0" stop-color="rgba(255,255,255,.9)"/>
+              <stop offset="0" stop-color="rgba(185,220,203,.35)"/>
               <stop offset="1" stop-color="rgba(255,255,255,0)"/>
             </radialGradient>
           </defs>
-          <rect width="1200" height="760" fill="#ffffff"/>
+          <rect width="1200" height="760" fill="#0a0a0c"/>
           <rect width="1200" height="760" fill="url(#g1)"/>
           <circle cx="280" cy="210" r="420" fill="url(#g2)" opacity=".55"/>
           <circle cx="980" cy="610" r="520" fill="url(#g2)" opacity=".25"/>
-          <path d="M70 650 C 260 560, 380 740, 590 650 S 950 560, 1130 650" fill="none" stroke="rgba(13,14,16,.18)" stroke-width="8" stroke-linecap="round"/>
+          <path d="M70 650 C 260 560, 380 740, 590 650 S 950 560, 1130 650" fill="none" stroke="rgba(230,238,60,.7)" stroke-width="6" stroke-linecap="round"/>
           <g font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
-            <text x="70" y="110" font-size="76" font-weight="800" fill="rgba(13,14,16,.88)" letter-spacing=".8">${safeLabel}</text>
-            <text x="70" y="168" font-size="26" font-weight="600" fill="rgba(13,14,16,.62)">${safeSub}</text>
-            <text x="70" y="708" font-size="18" fill="rgba(13,14,16,.45)">Preview placeholder — replace with your real image URL / path</text>
+            <text x="70" y="110" font-size="76" font-weight="800" fill="#ffffff" letter-spacing=".8">${safeLabel}</text>
+            <text x="70" y="168" font-size="26" font-weight="600" fill="rgba(255,255,255,.62)">${safeSub}</text>
+            <text x="70" y="708" font-size="18" fill="rgba(255,255,255,.4)">Preview placeholder — replace with your real image URL / path</text>
           </g>
         </svg>
       `;
@@ -1417,7 +1659,7 @@
         desc: "A calming interaction that translates emotional input into gentle visual responses.",
         tags: ["calm tech","emotion UI","web"],
         url: "https://localloopbkk.github.io/Emotion/",
-        thumb: "radial-gradient(420px 250px at 25% 25%, rgba(120,170,255,.55), transparent 60%), radial-gradient(320px 240px at 75% 75%, rgba(255,160,180,.38), transparent 60%), linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.26))"
+        thumb: "radial-gradient(160px 90px at 70% 40%, #2a0a1e, rgba(216,27,122,.95) 45%, rgba(233,186,214,0) 80%), #e9bad6"
       },
       {
         id: "gesture",
@@ -1426,7 +1668,7 @@
         desc: "Gesture-driven input paired with biosignal thinking for interaction mapping.",
         tags: ["gesture","realtime","interaction"],
         url: "https://localloopbkk.github.io/gesturewithbiosignals/Test.html",
-        thumb: "radial-gradient(420px 250px at 25% 25%, rgba(160,255,205,.50), transparent 60%), radial-gradient(320px 240px at 75% 75%, rgba(170,160,255,.34), transparent 60%), linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.26))"
+        thumb: "linear-gradient(160deg, #c8e5d6, #b9dccb 55%, #9fc7b4)"
       },
       {
         id: "repair",
@@ -1435,7 +1677,7 @@
         desc: "Exploring repair culture as everyday infrastructure and design justice.",
         tags: ["repair culture","civic","story"],
         url: "https://localloopbkk.github.io/repairculture/repart%20culture.html",
-        thumb: "radial-gradient(420px 250px at 25% 25%, rgba(255,210,140,.46), transparent 60%), radial-gradient(320px 240px at 75% 75%, rgba(120,170,255,.34), transparent 60%), linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.26))"
+        thumb: "radial-gradient(140px 90px at 85% 90%, rgba(31,63,207,.9), rgba(31,63,207,0) 70%), #c9552b"
       },
       {
         id: "coyard",
@@ -1444,7 +1686,7 @@
         desc: "Co-design workflows through a shareable web interface for communities.",
         tags: ["participation","platform","community"],
         url: "https://localloopbkk.github.io/coyard/",
-        thumb: "radial-gradient(420px 250px at 25% 25%, rgba(255,160,180,.44), transparent 60%), radial-gradient(320px 240px at 75% 75%, rgba(160,255,205,.34), transparent 60%), linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.26))"
+        thumb: "linear-gradient(180deg, #1f3fcf, #0d1c6b)"
       },
       {
         id: "nasa",
@@ -1453,7 +1695,7 @@
         desc: "Public record of participation and recognition (Cambridge).",
         tags: ["NASA","Space Apps","award"],
         url: "https://www.spaceappschallenge.org/2025/find-a-team/n-r-x-fp-x-ne-x-fl-x-fi-x-fc-x-l/",
-        thumb: "radial-gradient(420px 250px at 25% 25%, rgba(255,255,255,.30), transparent 60%), radial-gradient(320px 240px at 75% 75%, rgba(120,170,255,.42), transparent 60%), linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.26))"
+        thumb: "linear-gradient(90deg, #000 0 60%, rgba(230,238,60,.9) 60% 61%, #000 61%)"
       },
       {
         id: "aag",
@@ -1462,7 +1704,7 @@
         desc: "Advances in Architectural Geometry workshop participation reference.",
         tags: ["AAG","geometry","MIT"],
         url: "https://psl.design.upenn.edu/ovenbird-workshop-at-advances-in-architectural-geometry-conference2025/?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExY0hIMFNQaVN4eHhuRmVtSnNydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4Jlboh7HzqKKU2l7q4UyhbP99hO0Qyxvj5nLal7DqmAa2dMktASG55rlBFeQ_aem_tIiMDuqTQ6RlpblcBf9nGg",
-        thumb: "radial-gradient(420px 250px at 25% 25%, rgba(170,160,255,.44), transparent 60%), radial-gradient(320px 240px at 75% 75%, rgba(255,160,180,.28), transparent 60%), linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.26))"
+        thumb: "linear-gradient(170deg, #4b3a4f 0%, #c66a7e 60%, #e0876f)"
       },
       {
         id: "portfolioDoc",
@@ -1471,7 +1713,7 @@
         desc: "Consolidated references, claims, and supporting links for reviewers.",
         tags: ["evidence","doc","source of truth"],
         url: "https://docs.google.com/document/d/1TrDcxCsKXFzS3LC0WkeyFtnGdYd-39DQ6yeIHua_whU/edit?usp=sharing",
-        thumb: "radial-gradient(420px 250px at 25% 25%, rgba(160,255,205,.34), transparent 60%), radial-gradient(320px 240px at 75% 75%, rgba(255,210,140,.26), transparent 60%), linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.26))"
+        thumb: "linear-gradient(135deg, #1a1c1a, #3b4a44)"
       }
     ];
 
@@ -1623,7 +1865,7 @@
     tryOpenFromHash();
 
     // scroll up/down buttons (section-to-section)
-    const sectionEls = ["#home","#portfolio","#evidence","#contact"].map(s=>document.querySelector(s)).filter(Boolean);
+    const sectionEls = ["#home","#about","#portfolio","#evidence","#contact"].map(s=>document.querySelector(s)).filter(Boolean);
     function currentSectionIndex(){
       const y = window.scrollY + 120;
       let idx = 0;
